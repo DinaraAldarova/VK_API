@@ -1,0 +1,21 @@
+API_ID=6620613
+
+ѕолучение токена:
+https://oauth.vk.com/authorize?client_id=6620613&display=page&redirect_uri=https://oauth.vk.com/blank.html&scope=friends,video,photos&response_type=token&v=5.52
+https://oauth.vk.com/authorize?client_id=6620613&display=page&redirect_uri=https://oauth.vk.com/blank.html&scope=friends,video,photos,offline&response_type=token&v=5.52
+
+access_token=b12a7801e186afb5bb6b1083b1e1165259c184424054815096383e30b7c676737db57f9e68ff2df142c61
+expires_in=0
+user_id=494802881
+
+expires_in - врем€ жизни токена в секундах (если 0, то бессрочно; 86400 - сутки)
+user_id - пользователь, д€л которого получен токен
+
+ѕример запроса:
+https://api.vk.com/method/friends.getOnline?v=5.52&access_token=b12a7801e186afb5bb6b1083b1e1165259c184424054815096383e30b7c676737db57f9e68ff2df142c61
+
+¬ыборка не более 1000, пор€дка 200
+
+2 стать€, стр. 317
+
+«адачи: собрать данные со страницы

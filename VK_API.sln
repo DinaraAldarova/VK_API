@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29418.71
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VK_API", "VK_API.csproj", "{5488E799-223F-4EE9-B7ED-F969020F0E39}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5488E799-223F-4EE9-B7ED-F969020F0E39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5488E799-223F-4EE9-B7ED-F969020F0E39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5488E799-223F-4EE9-B7ED-F969020F0E39}.Debug|x64.ActiveCfg = Debug|x64
+		{5488E799-223F-4EE9-B7ED-F969020F0E39}.Debug|x64.Build.0 = Debug|x64
+		{5488E799-223F-4EE9-B7ED-F969020F0E39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5488E799-223F-4EE9-B7ED-F969020F0E39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5488E799-223F-4EE9-B7ED-F969020F0E39}.Release|x64.ActiveCfg = Release|x64
+		{5488E799-223F-4EE9-B7ED-F969020F0E39}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {82B24241-3FA2-4260-816C-5F5D7443C8C2}
+	EndGlobalSection
+EndGlobal

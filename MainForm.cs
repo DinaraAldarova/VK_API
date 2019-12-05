@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CefSharp;
+using CefSharp.WinForms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,14 +14,17 @@ namespace VK_API
 {
     public partial class MainForm : Form
     {
+        public ConnectAPI connect; 
         public MainForm()
         {
             InitializeComponent();
+            connect = new ConnectAPI();
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
+        private void buttonAuth_Click(object sender, EventArgs e)
         {
             FormAuth formAuth = new FormAuth();
+            formAuth.Owner = this;
             formAuth.ShowDialog();
         }
     }

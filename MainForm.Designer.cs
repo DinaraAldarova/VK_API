@@ -28,21 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.buttonAuth = new System.Windows.Forms.Button();
             this.SuspendLayout();
+            // 
+            // buttonAuth
+            // 
+            this.buttonAuth.Location = new System.Drawing.Point(519, 75);
+            this.buttonAuth.Name = "buttonAuth";
+            this.buttonAuth.Size = new System.Drawing.Size(126, 31);
+            this.buttonAuth.TabIndex = 0;
+            this.buttonAuth.Text = "Авторизоваться";
+            this.buttonAuth.UseVisualStyleBackColor = true;
+            this.buttonAuth.Click += new System.EventHandler(this.buttonAuth_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonAuth);
             this.Name = "MainForm";
             this.Text = "MainForm";
-            this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Button buttonAuth;
     }
 }
 

@@ -37,7 +37,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Name = "FormAuth";
             this.Text = "FormAuth";
-            this.Load += new System.EventHandler(this.FormAuth_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormAuth_FormClosing);
             this.ResumeLayout(false);
 
         }

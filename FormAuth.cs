@@ -19,7 +19,6 @@ namespace VK_API
         public FormAuth()
         {
             InitializeComponent();
-            main = this.Owner as MainForm;
             InitBrowser();
         }
 
@@ -29,7 +28,7 @@ namespace VK_API
             CefSettings settings = new CefSettings();
             Cef.Initialize(settings);
 
-            browser = new ChromiumWebBrowser("https://oauth.vk.com/authorize?client_id=6620613&display=page&redirect_uri=https://oauth.vk.com/blank.html&scope=friends,video,photos,offline&response_type=token&v=5.52");
+            browser = new ChromiumWebBrowser("https://oauth.vk.com/authorize?client_id=6620613&display=page&redirect_uri=https://oauth.vk.com/blank.html&scope=friends,wall,offline&response_type=token&v=5.52");
             browser.Dock = DockStyle.Fill;
             browser.AddressChanged += Check_Token;
 
@@ -41,12 +40,6 @@ namespace VK_API
             if (browser.Address.ToString().IndexOf("access_token=") != -1)
             {
                 GetToken();
-                //Application.Exit();
-                Dispatcher dispUI = Dispatcher.CurrentDispatcher;
-                Invoke((Action)(() =>
-                {
-                    this.Close();
-                }));
             }
         }
 
@@ -63,13 +56,14 @@ namespace VK_API
             [5]: "67234060"
             */
 
+            main = this.Owner as MainForm;
             main.connect = new ConnectAPI();
             main.connect.access_token = url[1];
             main.connect.user_id = url[5];
-            
+            main.connect.SaveToken();
         }
 
-        private void FormAuth_FormClosing(object sender, FormClosingEventArgs e)
+        private void FormAuth_FormClosed(object sender, FormClosedEventArgs e)
         {
             Cef.Shutdown();
         }

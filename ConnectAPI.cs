@@ -58,10 +58,10 @@ namespace VK_API
             HttpRequest GetInformation = new HttpRequest();
             GetInformation.AddUrlParam("v", "5.52");
             GetInformation.AddUrlParam("access_token", access_token);
-            string result = GetInformation.Get(_vkAPIURL + "friends.getOnline").ToString();
-            available = true;
             try
             {
+                string result = GetInformation.Get(_vkAPIURL + "friends.getOnline").ToString();
+                available = true;
                 Dictionary<string, string[]> dict = JsonConvert.DeserializeObject<Dictionary<string, string[]>>(result);
             }
             catch
@@ -80,11 +80,11 @@ namespace VK_API
             GetInformation.AddUrlParam("v", "5.52");
             GetInformation.AddUrlParam("access_token", access_token);
             GetInformation.AddUrlParam("owner_id", user_id);
-            string result = GetInformation.Get(_vkAPIURL + "wall.get").ToString();
             Dictionary<string, Dictionary<string, object>> dict;
             Post[] posts;
             try
             {
+                string result = GetInformation.Get(_vkAPIURL + "wall.get").ToString();
                 dict = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, object>>>(result);
                 posts = JsonConvert.DeserializeObject<Post[]>(dict["response"]["items"].ToString());
             }
@@ -108,10 +108,10 @@ namespace VK_API
             GetInformation.AddUrlParam("access_token", access_token);
             GetInformation.AddUrlParam("owner_id", user_id);
             GetInformation.AddUrlParam("message", text);
-            string result = GetInformation.Get(_vkAPIURL + "wall.post").ToString();
             Dictionary<string, Dictionary<string, int>> dict;
             try
             {
+                string result = GetInformation.Get(_vkAPIURL + "wall.post").ToString();
                 dict = JsonConvert.DeserializeObject< Dictionary<string, Dictionary<string, int>>>(result);
             }
             catch
@@ -127,10 +127,10 @@ namespace VK_API
             GetInformation.AddUrlParam("v", "5.52");
             GetInformation.AddUrlParam("access_token", access_token);
             GetInformation.AddUrlParam("posts", user_id + "_" + id_post);
-            string result = GetInformation.Get(_vkAPIURL + "wall.getById").ToString();
             Dictionary<string, Post[]> dict;
             try
             {
+                string result = GetInformation.Get(_vkAPIURL + "wall.getById").ToString();
                 dict = JsonConvert.DeserializeObject<Dictionary<string, Post[]>>(result);
             }
             catch
@@ -149,10 +149,10 @@ namespace VK_API
             GetInformation.AddUrlParam("owner_id", user_id);
             GetInformation.AddUrlParam("post_id", id_post);
             GetInformation.AddUrlParam("message", text);
-            string result = GetInformation.Get(_vkAPIURL + "wall.edit").ToString();
             Dictionary<string, int> dict;
             try
             {
+                string result = GetInformation.Get(_vkAPIURL + "wall.edit").ToString();
                 dict = JsonConvert.DeserializeObject<Dictionary<string, int>>(result);
             }
             catch
@@ -169,10 +169,10 @@ namespace VK_API
             GetInformation.AddUrlParam("access_token", access_token);
             GetInformation.AddUrlParam("owner_id", user_id);
             GetInformation.AddUrlParam("post_id", id_post);
-            string result = GetInformation.Get(_vkAPIURL + "wall.delete").ToString();
             Dictionary<string, int> dict;
             try
             {
+                string result = GetInformation.Get(_vkAPIURL + "wall.delete").ToString();
                 dict = JsonConvert.DeserializeObject<Dictionary<string, int>>(result);
             }
             catch

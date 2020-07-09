@@ -1,0 +1,26 @@
+﻿В проекте использовался следующий код:
+
+- автоматически генерируемый при создании проекта код
+- библиотека Newtonsoft.Json
+- библиотека XNet
+- API ВКонтакте
+- материал из сети Интернет (ресурс habr.ru)
+
+Newtonsoft.Json
+https://github.com/JamesNK/Newtonsoft.Json/blob/master/LICENSE.md
+MIT license, свободное распространение и коммерческое использование
+
+XNet
+https://github.com/X-rus/xNet/blob/master/LICENSE.txt
+BSD license, свободное распространение
+
+API ВКонтакте:
+https://vk.com/dev/rules
+API доступно для свободного, в том числе коммерческого использования
+
+Статья с ресурса habr.ru:
+https://habr.com/ru/post/314518/
+(код для авторизации формы FormAuth)
+Пользовательское соглашение ресурса Хабр:
+https://account.habr.com/info/agreement/?hl=ru_RU&_ga=2.30196278.848505746.1576475534-1057848917.1575520353
+По-умолчанию материалы статей доступны для свободного возпроизведения и распространения

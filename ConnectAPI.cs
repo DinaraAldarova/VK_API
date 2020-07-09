@@ -7,11 +7,13 @@ using System.IO;
 using System.Numerics;
 using xNet;
 using Newtonsoft.Json;
+using System.Web.UI;
 
 namespace VK_API
 {
     public class ConnectAPI
     {
+        #region Подключение к ВКонтакте
         public string access_token = "";
         public string user_id = "";
         private string _tokenPath = "C:\\Users\\dinar\\Desktop\\Token.txt";
@@ -69,7 +71,9 @@ namespace VK_API
             reader.Close();
             file.Close();
         }
-        
+        #endregion
+
+        #region Работа с одиночными постами (первая вкладка)
         public string[] GetListPosts ()
         {
             HttpRequest GetInformation = new HttpRequest();
@@ -177,5 +181,68 @@ namespace VK_API
             }
             return dict["response"] == 1;
         }
+        #endregion
+
+        #region Работа с группой постов (вторая вкладка)
+        public PostInfo[] GetListPostsDate()
+        {
+            PostInfo[] info;
+            int offset = 0;
+            int totalPosts = 0;
+
+            HttpRequest GetInformation = new HttpRequest();
+            GetInformation.AddUrlParam("v", "5.52");
+            GetInformation.AddUrlParam("access_token", access_token);
+            GetInformation.AddUrlParam("owner_id", user_id);
+            GetInformation.AddUrlParam("count", 100);
+            GetInformation.AddUrlParam("offset", 0);
+            string result = GetInformation.Get(_vkAPIURL + "wall.get").ToString();
+            
+            Dictionary<string, Dictionary<string, object>> dict;
+            Post[] posts;
+            try
+            {
+                dict = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, object>>>(result);
+                posts = JsonConvert.DeserializeObject<Post[]>(dict["response"]["items"].ToString());
+            }
+            catch
+            {
+                return new PostInfo[0];
+            }
+            
+            totalPosts = Convert.ToInt32(dict["response"]["count"]);
+            info = new PostInfo[totalPosts];
+
+            while (posts.Length > 0)
+            {
+                //парсим
+                for (int i = 0; i < posts.Length; i++)
+                {
+                    DateTime date = (new DateTime(1970, 1, 1, 0, 0, 0, 0)).AddSeconds(posts[i].date);
+                    info[offset] = new PostInfo(posts[i].id, date, posts[i].text);
+                    offset++;
+                }
+
+                //запрашиваем еще
+                GetInformation = new HttpRequest();
+                GetInformation.AddUrlParam("v", "5.52");
+                GetInformation.AddUrlParam("access_token", access_token);
+                GetInformation.AddUrlParam("owner_id", user_id);
+                GetInformation.AddUrlParam("count", 100);
+                GetInformation.AddUrlParam("offset", offset);
+                result = GetInformation.Get(_vkAPIURL + "wall.get").ToString();
+                try
+                {
+                    dict = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, object>>>(result);
+                    posts = JsonConvert.DeserializeObject<Post[]>(dict["response"]["items"].ToString());
+                }
+                catch
+                {
+                    return info;
+                }
+            }
+            return info;
+        }
+        #endregion
     }
 }
